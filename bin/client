@@ -25,6 +25,14 @@ var argv = require('yargs')
         alias: 'port',
         describe: 'Internal http server port',
     })
+    .option('wp', {
+        alias: 'whitelist-path',
+        describe: 'Whitelist path starting',
+    })
+    .option('ws', {
+        alias: 'whitelist-subnet',
+        describe: 'Whitelist subnet mask e.g 192.30.252.0/22 multiple can be supplied comma separated'
+    })
     .require('port')
     .help('help', 'Show this help and exit')
     .version(require('../package').version)
@@ -41,6 +49,8 @@ var opt = {
     port: argv.port,
     local_host: argv['local-host'],
     subdomain: argv.subdomain,
+    whitelist_subnet: argv.whitelistSubnet,
+    whitelist_path: argv.whitelistPath,
 };
 
 lt_client(opt.port, opt, function(err, tunnel) {
