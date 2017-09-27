@@ -7,4 +7,4 @@ COPY package-lock.json .
 RUN npm install -s --prod
 COPY . .
 
-ENTRYPOINT node ./bin/client
+ENTRYPOINT ["bin/client"]
